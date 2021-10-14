@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Wayfarer Translate Button
-// @version      0.0.1
+// @version      0.0.2
 // @description  Add translate button to review page
 // @namespace    https://github.com/haukka3/WayfarerExt
 // @downloadURL  https://github.com/haukka3/WayfarerExt/raw/main/wayfarer-translate-button.user.js
@@ -71,20 +71,33 @@
             }, 400);
             return;
         }
-
+		
+        const div = document.createElement('div');
+        div.className = 'wayfarertranslatediv';
+		
         let translateButton = document.createElement('button');
         translateButton.innerHTML = "Translate";
         translateButton.classList.add("wayfarertranslate__button");
         translateButton.onclick = function translateClick() {
-            let translateText = this.parentNode.textContent;
-            translateText = translateText.slice(9);
+			let translateNodes = document.querySelectorAll('.wf-review-card__body');
+            let translateText = translateNodes[1].textContent + "\n\n" + translateNodes[2].textContent;
+
             window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate');
         }
-        ref[1].childNodes[0].insertBefore(translateButton, ref[1].childNodes[0].firstChild);
+		div.appendChild(translateButton);
+		document.querySelector('wf-logo').parentNode.parentNode.appendChild(div);
+
     }
 
     (function () {
         const css = `
+          .wayfarertranslatediv {
+              color: #333;
+              margin-left: 2em;
+              padding-top: 0.3em;
+              text-align: center;
+              display: block;
+          }		
 		      .wayfarertranslate__button {
 		        background-color: #e5e5e5;
 		        border: none;
@@ -96,7 +109,6 @@
 		        display: inline-block;
 		        font-size: 16px;
 		      }
-
 			`;
         const style = document.createElement('style');
         style.type = 'text/css';

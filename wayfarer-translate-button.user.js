@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Wayfarer Translate Button
-// @version      0.0.2
+// @version      0.0.3
 // @description  Add translate button to review page
 // @namespace    https://github.com/haukka3/WayfarerExt
 // @downloadURL  https://github.com/haukka3/WayfarerExt/raw/main/wayfarer-translate-button.user.js
@@ -109,6 +109,10 @@
 		        display: inline-block;
 		        font-size: 16px;
 		      }
+          .dark .wayfarertranslate__button {
+            background-color: #404040;
+            color: #20B8E3;
+          }			  
 			`;
         const style = document.createElement('style');
         style.type = 'text/css';

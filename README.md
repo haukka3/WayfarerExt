@@ -1,1 +1,1 @@
-# WayfarerExt
+# Wayfarer Extensions

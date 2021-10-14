@@ -41,7 +41,15 @@
         };
     })(XMLHttpRequest.prototype.open);
 
+	function clearSetup() {
+		const clearNodes = document.querySelectorAll('.wayfarertranslatediv');
+		for (let i = 0; i < clearNodes.length; i++) {
+			clearNodes[i].parentNode.removeChild(clearNodes[i]);
+		}		
+	}
+
     function setupPage() {
+
         const ref = document.querySelector('wf-logo');
         if (!ref) {
             setTimeout(setupPage, 200);
@@ -71,7 +79,7 @@
             }, 400);
             return;
         }
-		
+		clearSetup();
         const div = document.createElement('div');
         div.className = 'wayfarertranslatediv';
 		
@@ -97,7 +105,7 @@
               padding-top: 0.3em;
               text-align: center;
               display: block;
-          }		
+          }
 		  .wayfarertranslate__button {
 			background-color: #e5e5e5;
 			border: none;
@@ -112,7 +120,7 @@
           .dark .wayfarertranslate__button {
             background-color: #404040;
             color: #20B8E3;
-          }			  
+          }
 			`;
         const style = document.createElement('style');
         style.type = 'text/css';

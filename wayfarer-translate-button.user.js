@@ -82,7 +82,7 @@
 			let translateNodes = document.querySelectorAll('.wf-review-card__body');
             let translateText = translateNodes[1].textContent + "\n\n" + translateNodes[2].textContent;
 
-            window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate');
+            window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate','wayfarertranslate');
         }
 		div.appendChild(translateButton);
 		document.querySelector('wf-logo').parentNode.parentNode.appendChild(div);
@@ -98,17 +98,17 @@
               text-align: center;
               display: block;
           }		
-		      .wayfarertranslate__button {
-		        background-color: #e5e5e5;
-		        border: none;
-		        color: #ff4713;
-		        padding: 4px 10px;
-		        margin: 1px;
-		        text-align: center;
-		        text-decoration: none;
-		        display: inline-block;
-		        font-size: 16px;
-		      }
+		  .wayfarertranslate__button {
+			background-color: #e5e5e5;
+			border: none;
+			color: #ff4713;
+			padding: 4px 10px;
+			margin: 1px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		  }
           .dark .wayfarertranslate__button {
             background-color: #404040;
             color: #20B8E3;

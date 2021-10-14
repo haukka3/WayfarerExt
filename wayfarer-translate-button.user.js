@@ -63,9 +63,9 @@
 
     function addTranslateButton() {
         const ref =
-            document.querySelectorAll('.wf-review-card__body')[1];
+            document.querySelectorAll('.wf-review-card__body');
 
-        if (!ref) {
+        if (!ref || ref.length < 2) {
             setTimeout(function () {
                 addTranslateButton();
             }, 400);
@@ -76,11 +76,11 @@
         translateButton.innerHTML = "Translate";
         translateButton.classList.add("wayfarertranslate__button");
         translateButton.onclick = function translateClick() {
-            let translateText = document.querySelectorAll('.wf-review-card__body')[1].childNodes[0].textContent;
+            let translateText = this.parentNode.textContent;
             translateText = translateText.slice(0, -9);
             window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate');
         }
-        ref.childNodes[0].appendChild(translateButton);
+        ref[1].childNodes[0].insertBefore(translateButton, ref[1].childNodes[0].firstChild);
     }
 
     (function () {
@@ -95,8 +95,6 @@
 		        text-decoration: none;
 		        display: inline-block;
 		        font-size: 16px;
-				position: absolute;
-				bottom: 30px;
 		      }
 
 			`;

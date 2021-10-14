@@ -77,7 +77,7 @@
         translateButton.classList.add("wayfarertranslate__button");
         translateButton.onclick = function translateClick() {
             let translateText = this.parentNode.textContent;
-            translateText = translateText.slice(0, -9);
+            translateText = translateText.slice(9);
             window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate');
         }
         ref[1].childNodes[0].insertBefore(translateButton, ref[1].childNodes[0].firstChild);

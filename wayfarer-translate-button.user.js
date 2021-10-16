@@ -41,12 +41,12 @@
         };
     })(XMLHttpRequest.prototype.open);
 
-	function clearSetup() {
-		const clearNodes = document.querySelectorAll('.wayfarertranslatediv');
-		for (let i = 0; i < clearNodes.length; i++) {
-			clearNodes[i].parentNode.removeChild(clearNodes[i]);
-		}		
-	}
+    function clearSetup() {
+        const clearNodes = document.querySelectorAll('.wayfarertranslate__div');
+        for (let i = 0; i < clearNodes.length; i++) {
+            clearNodes[i].parentNode.removeChild(clearNodes[i]);
+        }
+    }
 
     function setupPage() {
 
@@ -79,52 +79,52 @@
             }, 400);
             return;
         }
-		clearSetup();
+        clearSetup();
         const div = document.createElement('div');
-        div.className = 'wayfarertranslatediv';
-		
+        div.classList.add('wayfarertranslate__div');
+
         let translateButton = document.createElement('button');
         translateButton.innerHTML = "Translate";
         translateButton.classList.add("wayfarertranslate__button");
         translateButton.onclick = function translateClick() {
-			let translateNodes = document.querySelectorAll('.wf-review-card__body');
+            let translateNodes = document.querySelectorAll('.wf-review-card__body');
             let translateText = translateNodes[1].textContent + "\n\n" + translateNodes[2].textContent;
 
-            window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate','wayfarertranslate');
+            window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate', 'wayfarertranslate');
         }
-		div.appendChild(translateButton);
-		document.querySelector('wf-logo').parentNode.parentNode.appendChild(div);
+        div.appendChild(translateButton);
+        document.querySelector('wf-logo').parentNode.parentNode.appendChild(div);
 
     }
 
     (function () {
         const css = `
-          .wayfarertranslatediv {
-              color: #333;
-              margin-left: 2em;
-              padding-top: 0.3em;
-              text-align: center;
-              display: block;
-          }
-		  .wayfarertranslate__button {
-			background-color: #e5e5e5;
-			border: none;
-			color: #ff4713;
-			padding: 4px 10px;
-			margin: 1px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-		  }
-          .dark .wayfarertranslate__button {
-            background-color: #404040;
-            color: #20B8E3;
-          }
+            .wayfarertranslate__div {
+                color: #333;
+                margin-left: 2em;
+                padding-top: 0.3em;
+                text-align: center;
+                display: block;
+            }
+            .wayfarertranslate__button {
+                background-color: #e5e5e5;
+                border: none;
+                color: #ff4713;
+                padding: 4px 10px;
+                margin: 1px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            .dark .wayfarertranslate__button {
+                background-color: #404040;
+                color: #20B8E3;
+            }
 			`;
         const style = document.createElement('style');
         style.type = 'text/css';
         style.innerHTML = css;
         document.querySelector('head').appendChild(style);
-    })()
+    })();
 })();

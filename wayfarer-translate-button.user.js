@@ -120,6 +120,10 @@
                 text-align: center;
                 display: block;
             }
+            .dark .wayfarertranslate__div {
+                color: #ddd;
+            }
+
             .wayfarertranslate__button {
                 background-color: #e5e5e5;
                 border: none;

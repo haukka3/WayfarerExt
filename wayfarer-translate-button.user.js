@@ -9,7 +9,6 @@
 // ==/UserScript==
 
 // Copyright 2021 Haukka3
-// This file is part of the Wayfarer Addons collection.
 
 // This script is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

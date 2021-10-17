@@ -76,8 +76,9 @@
                 if (n.childNodes)
                     for (i = 0; i < n.childNodes.length; ++i)
                         a = a.concat(recursor(n.childNodes[i]));
-            } else
-                a.push(n.data);
+            } else {
+                a.push((n.data + '').trim());
+            }
             return a;
         }
         return recursor(node);

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Wayfarer Translate Button
-// @version      0.0.3
+// @version      0.0.4
 // @description  Add translate button to review page
 // @namespace    https://github.com/haukka3/WayfarerExt
 // @downloadURL  https://github.com/haukka3/WayfarerExt/raw/main/wayfarer-translate-button.user.js
@@ -69,6 +69,20 @@
         }
     }
 
+    function getText(node) {
+        function recursor(n) {
+            var i, a = [];
+            if (n.nodeType !== 3) {
+                if (n.childNodes)
+                     for (i = 0; i < n.childNodes.length; ++i)
+                         a = a.concat(recursor(n.childNodes[i]));
+            } else
+                a.push(n.data);
+            return a;
+        }
+        return recursor(node);
+    }
+
     function addTranslateButton() {
         const ref =
             document.querySelectorAll('.wf-review-card__body');
@@ -88,7 +102,7 @@
         translateButton.classList.add("wayfarertranslate__button");
         translateButton.onclick = function translateClick() {
             let translateNodes = document.querySelectorAll('.wf-review-card__body');
-            let translateText = translateNodes[1].textContent + "\n\n" + translateNodes[2].textContent;
+            let translateText = getText(translateNodes[1]).join("\n") + "\n\n" + getText(translateNodes[2]).join("\n");
 
             window.open('https://translate.google.com/?sl=auto&text=' + encodeURIComponent(translateText) + '&op=translate', 'wayfarertranslate');
         }

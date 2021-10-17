@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Wayfarer Translate Button
-// @version      0.0.4
+// @version      0.0.5
 // @description  Add translate button to review page
 // @namespace    https://github.com/haukka3/WayfarerExt
 // @downloadURL  https://github.com/haukka3/WayfarerExt/raw/main/wayfarer-translate-button.user.js
